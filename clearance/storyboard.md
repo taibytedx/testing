@@ -1,10 +1,10 @@
 PAS-X says do something
 Tell Tulip to do something
 
-- MES initiate message - request
-- Tulip Write - request
-- Tulip Receive - completed
-- MES write - Relay completion
+1. MES initiate message - request
+2. Tulip Write - request
+3. Tulip Receive - completed
+4. MES write - Relay completion
 
 ### Panel 1: Batch Completion Trigger
 PAS-X MES detects prior batch end (e.g., via ERP signal or recipe completion). It generates a "Line Clearance Required" electronic work order with details like batch ID, line number, product specs, and predefined checklist (e.g., remove labels/tools). Status updates to "Hold" in PAS-X dashboard; notification pushes to Tulip via API/MQTT/OPC UA integration.
