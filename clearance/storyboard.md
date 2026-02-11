@@ -1,10 +1,10 @@
-PAS-X says do something
-Tell Tulip to do something
+### Communication flow
 
-1. MES initiate message - request
-2. Tulip Write - request
-3. Tulip Receive - completed
-4. MES write - Relay completion
+1. PAS-X >> HB - request for line clearance
+2. HB >> Tulip - kick off workflow
+	1. Tulip poll table for new work
+3. HB << Tulip - poll for results/completion
+4. HB >> PAS-X - POST completion results
 
 ### Panel 1: Batch Completion Trigger
 PAS-X MES detects prior batch end (e.g., via ERP signal or recipe completion). It generates a "Line Clearance Required" electronic work order with details like batch ID, line number, product specs, and predefined checklist (e.g., remove labels/tools). Status updates to "Hold" in PAS-X dashboard; notification pushes to Tulip via API/MQTT/OPC UA integration.
@@ -25,6 +25,3 @@ Final checks: QA/operator reviews via split-screen checklist (e.g., "Labels corr
 
 ### Panel 6: Sync & Release
 Tulip posts completion data (timestamps, photos, signatures) back to PAS-X. MES updates line status to "Cleared," unlocks next batch recipe, and archives for batch record (21 CFR Part 11 compliant). Supervisor dashboard shows green KPI for line readiness.
-
-
-
